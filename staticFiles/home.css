@@ -1,0 +1,20 @@
+/*body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;}*/
+body {
+    background: Linen;
+    margin-top: 50px;
+    margin-left: 100px;
+    }
+   
+  h1 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 2.5em;
+    color: FireBrick;
+    }
+   
+  p {
+    font-family: Georgia, serif;
+    font-size: 1.2em;
+    color: rgb(0, 255, 255);
+    }
