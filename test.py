@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request
 app = Flask(__name__, template_folder='templates', static_folder='staticFiles')
-@app.route("/pp")
-def home():
-  return "BRUH!"
-@app.route("/homie")
+@app.route("/")
 def home2():
   return render_template("homepage.html")
 @app.route("/xob")
