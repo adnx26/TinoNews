@@ -6,6 +6,9 @@ def home():
 @app.route("/homie")
 def home2():
   return render_template("homepage.html")
+@app.route("/xob")
+def home3():
+  return render_template("home.html")
 @app.route('/', methods =["GET", "POST"])
 def gfg():
     if request.method == "POST":

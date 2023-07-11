@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<link rel="stylesheet" href="/staticFiles/home.css">-->
+</head>
+
+<script type="text/javascript">
+    function submit()
+    {
+        console.log("ran");
+       var question = document.getElementById("questionBox").value;
+       var temp = document.getElementById("thread").value;
+       document.getElementById('thread').textContent = question + "\r\n" + document.getElementById("thread").textContent;
+    }
+</script>
+
+<body>
+
+    <INPUT TYPE="text" id="questionBox" value=""/>
+    <button onclick="submit();">submit</button>
+
+    <p id="thread"></p>
+</body>
+</html>
