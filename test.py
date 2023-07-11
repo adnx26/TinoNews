@@ -6,6 +6,5 @@ def home2():
 @app.route("/form", methods =["GET"])
 def home3():
   return render_template("form.html")
-
 if __name__ == "__main__":
   app.run()
