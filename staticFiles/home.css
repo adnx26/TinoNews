@@ -1,10 +1,4 @@
-/*body {background-color: powderblue;}
-h1   {color: blue;}
-p    {color: red;}*/
-body {
-    background: Linen;
-    }
-   
+
   h1 {
     font-family: Verdana, Geneva, sans-serif;
     font-size: 2.5em;
@@ -16,7 +10,7 @@ body {
   p {
     font-family: Georgia, serif;
     font-size: 1.2em;
-    color: rgb(0, 255, 255);
+    color: rgb(0, 0, 0);
     }
     .topnav {
       overflow: hidden;
@@ -59,4 +53,19 @@ body {
         display: block;
         text-align: left;
       }
+
+      
+    }
+
+    .input{
+      padding-top: 50px;
+    }
+
+    input{
+      width: 750px;
+    }
+
+    #out{
+      background-color: #dadada;
+      width: 500px;
     }

@@ -2,33 +2,49 @@
 <html>
     <head>
         <title>Tino Tutors</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="/staticFiles/home.css">
         <script src="https://kit.fontawesome.com/346dc8b92a.js" crossorigin="anonymous"></script>
     </head>
 
 <script type="text/javascript">
-    function submit()
-    {
+    function submit(){
+
         console.log("ran");
-       var question = document.getElementById("questionBox").value;
-       var temp = document.getElementById("thread").value;
-       document.getElementById('thread').textContent = question + "\r\n" + document.getElementById("thread").textContent;
+        var question = document.getElementById("questionBox").value;
+        
+        finalQuestionbox(question);
+
+    }
+
+    function finalQuestionbox(q){
+        var element = document.createElement("div");
+        element.appendChild(document.createTextNode(q));
+        element.id = "out";
+        document.getElementById('questions').appendChild(element);
     }
 </script>
 
 <body>
 
+    <!--NAVBAR-->
     <div class="topnav">
         <a class="active" href="/"><i class="fa-solid fa-house"></i>  Home</a>
         <a href="/form"><i class="fa-solid fa-address-book"></i>  About</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
           </a>
-      </div>
+    </div>
 
-    <INPUT TYPE="text" id="questionBox" value=""/>
-    <button onclick="submit();">submit</button>
+    <!--INPUT QUESTION BOX-->
+    <div class = "input d-flex flex-column align-items-center justify-content-center">
+        <INPUT TYPE="text" id="questionBox" value="" placeholder="Enter Question Here: "><br>
+        <button onclick="submit();">submit</button>
+    </div>
 
-    <p id="thread"></p>
+    <!--OUTPUT BOX/WHERE YOU SEE QUESTIONS-->
+    <div id="questions" class="d-flex flex-column align-items-center justify-content-center"></div>
+
+
 </body>
 </html>
