@@ -1,0 +1,137 @@
+{
+    "_id": {
+        "$oid": "5bd761dcae323e45a93ccfe8"
+    },
+    "saleDate": {
+        "$date": {
+            "$numberLong": "1427144809506"
+        }
+    },
+    "items": [
+        {
+            "name": "baseball bat",
+            "tags": [
+                "sports",
+                "equipment"
+            ],
+            "price": {
+                "$numberDecimal": "49.01"
+            },
+            "quantity": {
+                "$numberInt": "1"
+            }
+        },
+        {
+            "name": "notepad",
+            "tags": [
+                "office",
+                "writing",
+                "school"
+            ],
+            "price": {
+                "$numberDecimal": "35.29"
+            },
+            "quantity": {
+                "$numberInt": "2"
+            }
+        },
+        {
+            "name": "pens",
+            "tags": [
+                "writing",
+                "office",
+                "school",
+                "stationary"
+            ],
+            "price": {
+                "$numberDecimal": "56.12"
+            },
+            "quantity": {
+                "$numberInt": "5"
+            }
+        },
+        {
+            "name": "backpack",
+            "tags": [
+                "school",
+                "travel",
+                "kids"
+            ],
+            "price": {
+                "$numberDecimal": "77.71"
+            },
+            "quantity": {
+                "$numberInt": "2"
+            }
+        },
+        {
+            "name": "notepad",
+            "tags": [
+                "office",
+                "writing",
+                "school"
+            ],
+            "price": {
+                "$numberDecimal": "18.47"
+            },
+            "quantity": {
+                "$numberInt": "2"
+            }
+        },
+        {
+            "name": "envelopes",
+            "tags": [
+                "stationary",
+                "office",
+                "general"
+            ],
+            "price": {
+                "$numberDecimal": "19.95"
+            },
+            "quantity": {
+                "$numberInt": "8"
+            }
+        },
+        {
+            "name": "envelopes",
+            "tags": [
+                "stationary",
+                "office",
+                "general"
+            ],
+            "price": {
+                "$numberDecimal": "8.08"
+            },
+            "quantity": {
+                "$numberInt": "3"
+            }
+        },
+        {
+            "name": "binder",
+            "tags": [
+                "school",
+                "general",
+                "organization"
+            ],
+            "price": {
+                "$numberDecimal": "14.16"
+            },
+            "quantity": {
+                "$numberInt": "3"
+            }
+        }
+    ],
+    "storeLocation": "Denver",
+    "customer": {
+        "gender": "M",
+        "age": {
+            "$numberInt": "17"
+        },
+        "email": "advaithnair26@gmail.com",
+        "satisfaction": {
+            "$numberInt": "5"
+        }
+    },
+    "couponUsed": true,
+    "purchaseMethod": "Online"
+}
