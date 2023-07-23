@@ -17,7 +17,7 @@ SDB = db["Subject"] # Subject Database
 
 @views.route('/')
 def home():
-    return render_template("home.html", question = "placeholder")
+    return render_template("test.html", question = "placeholder")
 
 #API
 class create_dict(dict): 
@@ -42,6 +42,8 @@ def get_questions():
 def add_questions():
     data = request.get_json()
     data = jsonify(data)
+
     print(request.get_json())
-    QDB.insert_one(request.get_json())
+    QDB.insert_one(str(json.loads(data)))
+
     return '', 204
