@@ -7,15 +7,13 @@ from datetime import datetime
 
 
 
-#views = Blueprint('views', __name__)
+views = Blueprint('views', __name__)
 cluster = MongoClient("mongodb+srv://TinoTutor:tinotutor1241@tinotutor.dupch6q.mongodb.net/")
 db = cluster["TinoTutor"]
 QDB = db["Questions"] #Question Database
 RDB = db["Replies"] #Replies Database
 UDB = db["User"] #User Database
 SDB = db["Subject"] # Subject Database
-
-views = Flask(__name__)
 
 
 
@@ -95,7 +93,3 @@ def get_subjects():
     for y in SDB.find():
         mydict.add("Subjects", ({"CALCAB":y['CALCAB'],"APLIT":y['APLIT']}))
     return json.dumps(mydict)
-
-
-if __name__ == '__main__':
-    views.run(debug=True)
