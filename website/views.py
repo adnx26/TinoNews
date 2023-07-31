@@ -17,7 +17,7 @@ if ENV_FILE:
 views = Flask(__name__)
 views.secret_key = env.get("APP_SECRET_KEY")
 
-#views = Blueprint('views', __name__)
+views = Blueprint('views', __name__)
 cluster = MongoClient("mongodb+srv://TinoTutor:tinotutor1241@tinotutor.dupch6q.mongodb.net/")
 db = cluster["TinoTutor"]
 QDB = db["Questions"] #Question Database
