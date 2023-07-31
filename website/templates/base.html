@@ -7,7 +7,7 @@
         <title>{% block title %}Base{% endblock %}</title>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     </head>
-    <body>
+    {% block body %}
         <nav>
         <div class="topnav">
             <a href="/" style="font-family:verdana;"><i class="fa-solid fa-house"></i>  Home</a>
@@ -15,5 +15,5 @@
             <a href="/AbtUs" style="font-family:verdana;"><i class="fa-solid fa-address-book"></i>  About Us</a>
         </div>
         </nav>
-    </body>
+    {% endblock %}
 </html>
