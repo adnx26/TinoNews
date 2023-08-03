@@ -1,3 +1,5 @@
+'''
+
 from flask import Flask
 
 def create_app():
@@ -11,3 +13,5 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
 
     return app
+
+'''

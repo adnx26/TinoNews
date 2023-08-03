@@ -2,14 +2,7 @@ from flask import Blueprint
 
 auth = Blueprint('auth', __name__)
 
-@auth.route("/login")
+@auth.route("/xob")
 def login():
-    return
-
-@auth.route("logout")
-def logout():
-    return
-
-@auth.route('/sign-up')
-def sign_up():
+    print("reached auth")
     return
