@@ -1,9 +1,45 @@
 {% extends "base.html" %}
-{% block title %}test{% endblock %} 
+{% block title %}test{% endblock %}
+{% block scripts %}
+
+<script type="text/javascript">
+	{% include "/templates/HomeButton.js" %}
+</script>
+
+{{super()}}
+
+{% endblock %}
 {% block body %}
-    <h1>Index</h1>
-    <p class="important">
-      Welcome to my awesome homepage.
-    </p>
-    {{ super() }}
+{% if session %}
+<!--NAVBAR-->
+<div class="topnav">
+  <a class="active" href="/" style="font-family:verdana;"><i class="fa-solid fa-house"></i> Home</a>
+  <a href="/form" style="font-family:verdana;"><i class="fa-solid fa-address-book"></i> Search</a>
+  <a href="/AbtUs" style="font-family:verdana;"><i class="fa-solid fa-address-book"></i> About Us</a>
+  <a href="/logout" style="font-family:verdana;"><i class="fa-solid fa-address-book"></i> Logout</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+
+<!--INPUT QUESTION BOX-->
+<div class="input d-flex flex-column align-items-center justify-content-center">
+  <INPUT TYPE="text" id="questionBox" value="" placeholder="Enter Question Here: "><br>
+  <button onclick="submit();" id="submitButton">submit</button>
+
+</div>
+
+<!--REPLY BOX-->
+<div class="input d-flex flex-column align-items-center justify-content-center">
+  <INPUT TYPE="text" id="replyBox" value="" placeholder="Enter Question Here: "><br>
+  <button onclick="submitReply()" id="repliesButton">reply</button>
+</div>
+
+<!--OUTPUT BOX/WHERE YOU SEE QUESTIONS-->
+<div id="questions" class="d-flex flex-column align-items-center justify-content-center"></div>
+
+{% else %}
+<p><a href="/login" id="qsLoginBtn">Login</a></p>
+{% endif %}
 {% endblock %}
