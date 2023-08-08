@@ -15,7 +15,7 @@ window.onload = function () {
 
   document.getElementById("submitButton").onclick = function () {
     //document.getElementById("questionBox").value
-    fetch("/api/question/post", {
+    fetch("admin/api/question/post", {
       // Declare what type of data we're sending
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ window.onload = function () {
 
   document.getElementById("repliesButton").onclick = function () {
     //document.getElementById("questionBox").value
-    fetch("/api/replies/post", {
+    fetch("admin/api/replies/post", {
       // Declare what type of data we're sending
       headers: {
         "Content-Type": "application/json",
