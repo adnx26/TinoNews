@@ -9,6 +9,8 @@ from urllib.parse import quote_plus, urlencode
 from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
 from flask import  redirect, session, url_for
+import http.client
+
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -17,6 +19,8 @@ if ENV_FILE:
 
 api = Blueprint('api', __name__, static_folder="static", template_folder="templates")
 
+
+
 cluster = MongoClient("mongodb+srv://TinoTutor:tinotutor1241@tinotutor.dupch6q.mongodb.net/")
 db = cluster["TinoTutor"]
 QDB = db["Questions"] #Question Database
@@ -24,7 +28,19 @@ RDB = db["Replies"] #Replies Database
 UDB = db["User"] #User Database
 SDB = db["Subject"] # Subject Database
 
+'''
+conn = http.client.HTTPSConnection("tinotutor.us.auth0.com")
 
+headers = { 'authorization': "Bearer " + env.get("MNGEMNT_API_TKN")}
+
+conn.request("GET", "/api/v2/users?q=email%3A%22" + main.session.userinfo.name + "%22&search_engine=v3", headers=headers)
+
+
+res = conn.getresponse()
+data = res.read()
+uuid = json.loads(data.decode("utf-8"))
+print(uuid[0]["identities"][0]["user_id"])
+'''
 
 #API
 class create_dict(dict): 
@@ -99,4 +115,11 @@ def get_subjects():
     for y in SDB.find():
         mydict.add("Subjects", ({"CALCAB":y['CALCAB'],"APLIT":y['APLIT']}))
     return json.dumps(mydict)
+
+@api.route('/api/user/post')
+def add_user():
+    data = request.get_json()
+    data = jsonify(data)
+    print(data)
+    return '', 204
 

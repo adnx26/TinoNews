@@ -11,10 +11,7 @@ from urllib.parse import quote_plus, urlencode
 from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
 from flask import  redirect, session, url_for
-
-
 from apiViews import api
-
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -53,6 +50,7 @@ def home():
 def callback():
     token = oauth.auth0.authorize_access_token()
     session["user"] = token
+    print(session.userinfo.name)
     return redirect("/")
 
 
@@ -78,6 +76,9 @@ def logout():
             quote_via=quote_plus,
         )
     )
+
+
+
 
 
 

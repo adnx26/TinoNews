@@ -9,8 +9,10 @@
     </head>
 
 <script type="text/javascript">
+
     window.onload = function(){ 
-    
+
+   
     function submit(box){
 
         console.log("ran");
@@ -29,7 +31,7 @@
 
     document.getElementById('submitButton').onclick = function(){
         //document.getElementById("questionBox").value
-        fetch('/api/question/post', {
+        fetch('admin/api/question/post', {
             // Declare what type of data we're sending
             headers: {
                 'Content-Type': 'application/json'
@@ -43,13 +45,12 @@
                 "Question": document.getElementById("questionBox").value
             })
         })
-        .then(response => console.log("why is this an error"))
-        .then(response => console.log(JSON.stringify(response)))
+        .then(response => console.log(document.getElementById("questionBox").value))
     }
 
     document.getElementById('repliesButton').onclick = function(){
         //document.getElementById("questionBox").value
-        fetch('/api/replies/post', {
+        fetch('admin/api/replies/post', {
             // Declare what type of data we're sending
             headers: {
                 'Content-Type': 'application/json'
@@ -63,8 +64,7 @@
                 "Replies": document.getElementById("replyBox").value
             })
         })
-        .then(response => console.log("why is this an error"))
-        .then(response => console.log(JSON.stringify(response)))
+        .then(response => console.log(document.getElementById("replyBox").value))
     }
         
     
@@ -86,6 +86,8 @@
           </a>
     </div>
 
+    <h2 id= "email">{{session.userinfo.name}}</h2>
+
     
     <!--INPUT QUESTION BOX-->
     <div class = "input d-flex flex-column align-items-center justify-content-center">
@@ -99,6 +101,8 @@
         <INPUT TYPE="text" id="replyBox" value="" placeholder="Enter Question Here: "><br>
             <button onclick="submitReply()"id="repliesButton">reply</button>
     </div>
+
+    <button id="getEmail">reply</button>
 
     <!--OUTPUT BOX/WHERE YOU SEE QUESTIONS-->
     <div id="questions" class="d-flex flex-column align-items-center justify-content-center"></div>
