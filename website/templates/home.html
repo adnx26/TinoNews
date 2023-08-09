@@ -76,16 +76,7 @@
 <body>
     {% if session %}
     <!--NAVBAR-->
-    <div class="topnav">
-        <a class="active" href="/" style="font-family:verdana;"><i class="fa-solid fa-house"></i>  Home</a>
-        <a href="/form" style="font-family:verdana;"><i class="fa-solid fa-address-book" ></i>  Search</a>
-        <a href="/AbtUs" style="font-family:verdana;"><i class="fa-solid fa-address-book"></i>  About Us</a>
-        <a href="/logout" style="font-family:verdana;"><i class="fa-solid fa-address-book"></i>  Logout</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-          </a>
-    </div>
-
+    
     <h2 id= "email">{{session.userinfo.name}}</h2>
 
     
@@ -98,7 +89,7 @@
     
     <!--REPLY BOX-->
     <div class = "input d-flex flex-column align-items-center justify-content-center">
-        <INPUT TYPE="text" id="replyBox" value="" placeholder="Enter Question Here: "><br>
+        <INPUT TYPE="text" id="replyBox" value="" placeholder="Enter Reply Here: "><br>
             <button onclick="submitReply()"id="repliesButton">reply</button>
     </div>
 

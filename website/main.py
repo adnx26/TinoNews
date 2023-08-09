@@ -13,6 +13,12 @@ from dotenv import find_dotenv, load_dotenv
 from flask import  redirect, session, url_for
 from apiViews import api
 
+from auth0.authentication import Users
+
+domain = 'tinotutor.auth0.com'
+
+
+
 ENV_FILE = find_dotenv()
 if ENV_FILE:
     load_dotenv(ENV_FILE)
@@ -50,7 +56,9 @@ def home():
 def callback():
     token = oauth.auth0.authorize_access_token()
     session["user"] = token
-    print(session.userinfo.name)
+    print(token)
+    print("-------------------------------------------------")
+    print(session["user"]["access_token"])
     return redirect("/")
 
 
