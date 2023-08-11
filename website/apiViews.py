@@ -21,7 +21,7 @@ api = Blueprint('api', __name__, static_folder="static", template_folder="templa
 
 
 
-cluster = MongoClient("mongodb+srv://TinoTutor:tinotutor1241@tinotutor.dupch6q.mongodb.net/")
+cluster = pymongo.MongoClient("mongodb+srv://TinoTutor:tinotutor1241@tinotutor.dupch6q.mongodb.net/")
 db = cluster["TinoTutor"]
 QDB = db["Questions"] #Question Database
 RDB = db["Replies"] #Replies Database

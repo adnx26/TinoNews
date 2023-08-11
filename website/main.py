@@ -11,7 +11,7 @@ from urllib.parse import quote_plus, urlencode
 from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
 from flask import  redirect, session, url_for
-from website.apiViews import api
+from apiViews import api
 
 from auth0.authentication import Users
 
@@ -84,10 +84,6 @@ def logout():
             quote_via=quote_plus,
         )
     )
-
-
-
-
 
 
 if __name__ == "__main__":
