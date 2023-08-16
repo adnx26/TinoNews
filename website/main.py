@@ -46,7 +46,7 @@ oauth.register(
 @app.route("/")
 def home():
     return render_template(
-        "test.jinja",
+        "index.jinja",
         session=session.get("user"),
         pretty=json.dumps(session.get("user"), indent=4),
     )
@@ -87,4 +87,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
