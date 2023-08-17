@@ -12,7 +12,7 @@ window.onload = function () {
     element.id = "out";
     document.getElementById("questions").appendChild(element);
   }
-
+  /*
   document.getElementById("submitButton").onclick = function () {
     //document.getElementById("questionBox").value
     fetch("admin/api/question/post", {
@@ -52,4 +52,5 @@ window.onload = function () {
       .then((response) => console.log("why is this an error"))
       .then((response) => console.log(JSON.stringify(response)));
   };
+  */
 };

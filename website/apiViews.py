@@ -64,7 +64,7 @@ def get_questions():
     mydict = create_dict()
     for y in QDB.find():
         mydict.add(str(y['_id']), ({"uuid":y['uuid'],"time":y['time'],"context":y['context'], "subjectid":y['subjectid'], "schoolid":y['schoolid']}))
-    return json.dumps(mydict)
+    return mydict
 
 #post question after enter into input box
 @api.route('/api/question/post', methods=['POST'])
