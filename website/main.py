@@ -48,7 +48,7 @@ oauth.register(
 @app.route("/")
 def home():
     return render_template(
-        "subjectsPage.jinja",
+        "index.jinja",
         session=session.get("user"),
         pretty=json.dumps(session.get("user"), indent=4),
     )
