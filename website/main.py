@@ -12,6 +12,7 @@ from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
 from flask import  redirect, session, url_for
 from apiViews import api
+from home import website
 
 from auth0.authentication import Users
 
@@ -29,6 +30,7 @@ app.secret_key = env.get("APP_SECRET_KEY")
 
 
 app.register_blueprint(api, url_prefix="/admin")
+app.register_blueprint(website, url_prefix="/")
 
 
 oauth = OAuth(app)
@@ -46,7 +48,7 @@ oauth.register(
 @app.route("/")
 def home():
     return render_template(
-        "index.jinja",
+        "subjectsPage.jinja",
         session=session.get("user"),
         pretty=json.dumps(session.get("user"), indent=4),
     )

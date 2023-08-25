@@ -113,7 +113,7 @@ def add_replies():
 def get_subjects():
     mydict = create_dict()
     for y in SDB.find():
-        mydict.add("Subjects", ({"CALCAB":y['CALCAB'],"APLIT":y['APLIT']}))
+        mydict.add(str(y['_id']), ({"Subject":y['Subject']}))
     return json.dumps(mydict)
 
 @api.route('/api/user/post')
