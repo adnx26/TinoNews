@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tino Tutors</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="/website/staticFiles/home.css">
+        <script src="https://kit.fontawesome.com/346dc8b92a.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+
+<script type="text/javascript">
+
+    window.onload = function(){ 
+
+   
+    function submit(box){
+
+        console.log("ran");
+        var question = document.getElementById(box).value;
+        
+        finalQuestionbox(question);
+
+    }
+
+    function finalQuestionbox(q){
+        var element = document.createElement("div");
+        element.appendChild(document.createTextNode(q));
+        element.id = "out";
+        document.getElementById('questions').appendChild(element);
+    }
+
+    document.getElementById('submitButton').onclick = function(){
+        //document.getElementById("questionBox").value
+        fetch('admin/api/question/post', {
+            // Declare what type of data we're sending
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            // Specify the method
+            method: 'POST',
+
+            // A JSON payload
+            body: JSON.stringify({
+                "Question": document.getElementById("questionBox").value
+            })
+        })
+        .then(response => console.log(document.getElementById("questionBox").value))
+    }
+
+    document.getElementById('repliesButton').onclick = function(){
+        //document.getElementById("questionBox").value
+        fetch('admin/api/replies/post', {
+            // Declare what type of data we're sending
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            // Specify the method
+            method: 'POST',
+
+            // A JSON payload
+            body: JSON.stringify({
+                "Replies": document.getElementById("replyBox").value
+            })
+        })
+        .then(response => console.log(document.getElementById("replyBox").value))
+    }
+        
+    
+};
+
+
+</script>
+
+<body>
+    {% if session %}
+    <!--NAVBAR-->
+    
+    <h2 id= "email">{{session.userinfo.name}}</h2>
+
+    
+    <!--INPUT QUESTION BOX-->
+    <div class = "input d-flex flex-column align-items-center justify-content-center">
+        <INPUT TYPE="text" id="questionBox" value="" placeholder="Enter Question Here: "><br>
+            <button onclick="submit();" id="submitButton">submit</button>
+            
+    </div>
+    
+    <!--REPLY BOX-->
+    <div class = "input d-flex flex-column align-items-center justify-content-center">
+        <INPUT TYPE="text" id="replyBox" value="" placeholder="Enter Reply Here: "><br>
+            <button onclick="submitReply()"id="repliesButton">reply</button>
+    </div>
+
+    <button id="getEmail">reply</button>
+
+    <!--OUTPUT BOX/WHERE YOU SEE QUESTIONS-->
+    <div id="questions" class="d-flex flex-column align-items-center justify-content-center"></div>
+    
+    {% else %}
+    <p><a href="/login" id="qsLoginBtn">Login</a></p>
+    {% endif %}
+</body>
+</html>

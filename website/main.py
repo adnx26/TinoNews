@@ -16,6 +16,8 @@ from home import website
 
 from auth0.authentication import Users
 
+from flask_cors import CORS
+
 domain = 'tinotutor.auth0.com'
 
 
@@ -27,7 +29,7 @@ if ENV_FILE:
 
 app = Flask(__name__)
 app.secret_key = env.get("APP_SECRET_KEY")
-
+CORS(app, support_credentials=True)
 
 app.register_blueprint(api, url_prefix="/admin")
 app.register_blueprint(website, url_prefix="/")
@@ -48,7 +50,7 @@ oauth.register(
 @app.route("/")
 def home():
     return render_template(
-        "index.jinja",
+        "subjectsPage.jinja",
         session=session.get("user"),
         pretty=json.dumps(session.get("user"), indent=4),
     )

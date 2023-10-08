@@ -7,28 +7,49 @@ function addFromAPI(apiURL, adjHtmlID, subjectID){
     .then(data => {
         tor = Object.keys(data);
         tor.forEach(q =>{
+            
             if(data[q]["subjectid"] == subjectID){
+                console.log(data[q]);
                 const markup = `
-                <a href = ` + window.location.href + `/${q}>
-                    <div class="col" >
-                        <div class="card shadow-sm" style="text-decoration:none; color: #000000;">
-                            <svg class="bd-placeholder-img card-img-top" width="50%" height="50" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>wowoow</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
-                            <div class="card-body">
-                                <p class="card-text" id = "context">${data[q]["context"]}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">Replies: </small>
-                                </div>
-                            </div>
+                <div class="col-xl-4 col-md-6">
+
+                    <!-- Start Card-->
+                    <article class="blog-details">
+
+                    <div class="card border-0 rounded-0 position-relative box-shadow">
+        
+                        <div class="card-body">
+                        <!-- insert Header-->
+
+                        
+                            <h5 class="card-title">${data[q]["title"]}</h5>
+
+                        <!-- Insert Date and Author as subtitle of the card-->
+                        <h8 class="card-subtitle mb-2 text-muted">on Aug 23, 2023</h8>
+
+                            <p class="card-text">${data[q]["context"]}</p>
+                        </br>
+                        <a href="blog-details.html" class="btn btn-success" id="${q}">More</a>
+
+
                         </div>
                     </div>
-                </a>`;
+
+                    </article>
+                    <!-- End Card -->
+
+                </div><!-- End post list item -->
+                `;
                 document.getElementById(adjHtmlID).insertAdjacentHTML("beforeend", markup);
+                
             }
         })
     })
     .catch(error => console.log(error))
 
+     
 }
+//${data[q]["context"]}
 
 function addSubjectsAPI(apiURL, adjHtmlID){
     fetch(apiURL)
@@ -40,19 +61,35 @@ function addSubjectsAPI(apiURL, adjHtmlID){
         console.log(tor)
         tor.forEach(q =>{
                 const markup = `
-                <a href = "/${data[q]["Subject"]}">
-                    <div class="col" >
-                        <div class="card shadow-sm" style="text-decoration:none; color: #000000;">
-                            <svg class="bd-placeholder-img card-img-top" width="50%" height="50" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>wowoow</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
-                            <div class="card-body">
-                                <p class="card-text" id = "context">${data[q]["Subject"]}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">Number of Questions: </small>
-                                </div>
-                            </div>
+                <div class="col-xl-4 col-md-6">
+
+                    <!-- Start Card-->
+                    <article class="blog-details">
+
+                    <div class="card border-0 rounded-0 position-relative box-shadow">
+        
+                        <div class="card-body">
+                        <!-- insert Header-->
+
+                        
+                            <h5 class="card-title">Question Header</h5>
+
+                        <!-- Insert Date and Author as subtitle of the card-->
+                        <h8 class="card-subtitle mb-2 text-muted">on Aug 23, 2023</h8>
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </br>
+                        <a href="blog-details.html" class="btn btn-success">More</a>
+
+
                         </div>
                     </div>
-                </a>`;
+
+                    </article>
+                    <!-- End Card -->
+
+                </div><!-- End post list item -->
+                `;
                 
                 document.getElementById(adjHtmlID).insertAdjacentHTML("beforeend", markup);
         })
@@ -63,7 +100,33 @@ function addSubjectsAPI(apiURL, adjHtmlID){
 
 
 window.onload = function () { 
-    addFromAPI('http://127.0.0.1:5000/admin/api/question/get', "questionArea", "CALCAB")
-    addSubjectsAPI('http://127.0.0.1:5000/admin/api/subjects/get', "subjectArea")
+    
+    var QID = addFromAPI('http://www.tinotutor.com/admin/api/question/get', "BlogArea", "CALCAB");
+
+    
+
+
+    document.getElementById('postQuestionButton').onclick = function(){
+        //document.getElementById("questionBox").value
+        console.log(document.getElementById("postQuestionTitle").value)
+        fetch('http://www.tinotutor.com/admin/api/question/post', {
+            
+            // Declare what type of data we're sending
+            headers: {
+                'Content-Type': 'application/json'
+                
+            },
+
+            // Specify the method
+            method: 'POST',
+
+            // A JSON payload
+            body: JSON.stringify({
+                "Title": document.getElementById("postQuestionTitle").value,
+                "Question": document.getElementById("postQuestionContext").value
+            })
+        })
+        .then(response => console.log("awjdlbawkl"))
+    }
 }
 

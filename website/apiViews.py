@@ -63,7 +63,7 @@ def test():
 def get_questions():
     mydict = create_dict()
     for y in QDB.find():
-        mydict.add(str(y['_id']), ({"uuid":y['uuid'],"time":y['time'],"context":y['context'], "subjectid":y['subjectid'], "schoolid":y['schoolid']}))
+        mydict.add(str(y['_id']), ({"uuid":y['uuid'],"time":y['time'],"title":y['title'], "context":y['context'], "subjectid":y['subjectid'], "schoolid":y['schoolid']}))
     return mydict
 
 #post question after enter into input box
@@ -75,6 +75,7 @@ def add_questions():
     questionDict ={
         "uuid": 0,
         "time": str(datetime.now()),
+        "title": request.get_json()["Title"],
         "context": request.get_json()["Question"],
         "subjectid": "CALCAB",
         "schoolid": 10
